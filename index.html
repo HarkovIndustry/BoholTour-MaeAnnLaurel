@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laurel's Bohol Tourist Spot Suggestion</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="frameworks/fixscreen.css">
+    <style>
+        :root {
+            --primary-color: #1c1c1c;
+            --secondary-color: #007bff;
+            --text-color: #fff;
+            --background-color: #343a40;
+            --hover-color: #0056b3;
+            --navbar-bg-color: rgba(255, 255, 255, 0.8);
+            --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        nav.navbar {
+            background-color: var(--primary-color);
+        }
+
+        nav.navbar a {
+            color: var(--text-color);
+        }
+
+        nav.navbar a:hover {
+            color: var(--hover-color);
+        }
+
+        .cardcontainer .card {
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cardcontainer .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .card .carousel-inner img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+    <script>
+        const cards = [
+            {
+                path: 'images/Alona Beach/', images: ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg'], fee: 'Free', contact: '0938 502 8101',
+                place: 'Alona Beach', description: 'Relax on the stunning, kilometer-long white sand beach in Panglao Island.', address: 'Panglao, Bohol, Philippines', button: 'View More'
+            },
+            {
+                path: 'images/Baclayon Church/', images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.JPG', '8.JPG'], fee: 'Free', contact: '0938 540 9088',
+                place: 'Baclayon Church', description: 'Dedicated to Our Lady of the Immaculate Conception, this ancient Catholic stone church showcases Bohol&apos;s rich history.', address: 'Main Road, Baclayon, Bohol', button: 'View More'
+            },
+            {
+                path: 'images/Bilar Man-Made Forest/', images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'], fee: 'Free', contact: '0938 540 9088',
+                place: 'Bilar Man-Made Forest', description: 'Stroll through the refreshing, two-kilometer stretch of Mahogany trees.', address: 'Loay Interior Road, Bilar, Bohol', button: 'View More'
+            },
+            {
+                path: 'images/Blood Compact Shrine/', images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'], fee: 'Free', contact: '0938 411 2014',
+                place: 'Blood Compact Shrine', description: 'Historic site commemorating the Blood Compact between Sikatuna and Miguel Lopez de Legaspi, symbolizing peace and friendship.', address: 'J.P Inting Street, Tagbilaran City, 6300 Bohol', button: 'View More'
+            },
+            {
+                path: 'images/Bohol Bee Farm/', images: ['1.JPG', '2.jpg', '3.jpg', '4.jpg', '5.jpg'], fee: '500 PHP (with lunch)', contact: '0938 502 2288',
+                place: 'Bohol Bee Farm', description: 'Discover beekeeping wonders, enjoy scenic surroundings, and savor local cuisine.', address: 'Bohol Bee Farm, Dao, Dauis, Panglao Island, Bohol', button: 'View More'
+            },
+            {
+                path: 'images/Chocolate Hills/', images: ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg'], fee: '100 PHP', contact: '0938 411 2014',
+                place: 'Chocolate Hills', description: 'Witness breathtaking, chocolate-brown hills formed by tidal movements, a natural wonder.', address: 'Carmen, Bohol', button: 'View More'
+            },
+            {
+                path: 'images/Danao Adventure Park/', images: ['1.jpg', '2.jpg', '3.JPG', '4.jpg', '5.jpg'], fee: '500 - 2,000 PHP', contact: '0938 510 0055',
+                place: 'Danao Adventure Park', description: 'Experience extreme adventures like sky ride, plunge, and river trekking amidst nature.', address: 'Danao, Bohol', button: 'View More'
+            },
+            {
+                path: 'images/Loboc River/', images: ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg'], fee: '500 - 1,500 PHP', contact: '0938 537 9141',
+                place: 'Loboc River', description: 'Experience a scenic river cruise, savor lunch at floating restaurants, and marvel at stunning views of lush greens.', address: 'Poblacion Sawang, Loboc Bohol', button: 'View More'
+            },
+            {
+                path: 'images/Philippine Tarsier Foundation/', images: ['1.jpg', '2.jpg', '3.JPG', '4.jpg', '5.jpg'], fee: '60 PHP', contact: '0938 535 9275',
+                place: 'Philippine Tarsier Foundation', description: 'Meet the smallest primates, learn about conservation efforts, and support wildlife preservation.', address: 'Philippine Tarsier Foundation Inc., Corella Bohol', button: 'View More'
+            },
+            {
+                path: 'images/Tigbao Hanging Bridge/', images: ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg'], fee: 'Free', contact: '0938 537 9141',
+                place: 'Tigbao Hanging Bridge', description: 'Cross the steel and bamboo bridge, explore souvenir shops, and visit the "buko king" of Bohol.', address: 'Tigbao, Loboc Bohol', button: 'View More'
+            },
+        ];
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Bohol Destinations</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"> <a class="nav-link" href="#">Home</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#destinations">Destinations</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#contact">Contact</a> </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container mt-5 pt-5 text-center">
+        <h1 class="display-4">Top 10 Tourist Destinations in Bohol</h1>
+        <p>Welcome to your ultimate guide to exploring the wonders of Bohol. Discover the best spots to visit and enjoy
+            your stay!</p>
+    </header>
+
+    <div id="destinations" class="cardcontainer container mt-5"></div>
+
+    <div id="contact" class="container mt-5">
+        <h2 class="text-center text-primary">Contact Us</h2>
+        <p class="text-center">Feel free to reach out to us via the following platforms:</p>
+        <ul class="list-group list-group-flush text-center">
+            <li class="list-group-item"><strong>Facebook:</strong> <a
+                    href="https://www.facebook.com/maeann.laurelbsiti?mibextid=ZbWKwL">Mae Ann Laurel</a></li>
+            <li class="list-group-item"><strong>Contact Number:</strong> null</li>
+        </ul>
+    </div>
+
+    <footer>
+        &copy; 2024 Bohol Tourism. All Rights Reserved.
+    </footer>
+
+    <script src="frameworks/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="frameworks/sweetalert2.min.js"></script>
+    <script src="frameworks/script.js"></script>
+
+</body>
+
+</html>
